@@ -592,9 +592,9 @@ uint32_t thread_stack_ofs = offsetof (struct thread, stack);
 
 /* Check if the thread can be resume by the ticks */
 void checkInvoke(struct thread* t, void* aux UNUSED){
-  if(t->status == THREAD_BLOCKED && t->ticks_blocked > 0){
-    t->ticks_blocked --;
-    if(t->ticks_blocked == 0){
+  if(t->status == THREAD_BLOCKED && t->ticks_to_blocked > 0){
+    t->ticks_to_blocked --;
+    if(t->ticks_to_blocked == 0){
       thread_unblock(t);
     }
   }
