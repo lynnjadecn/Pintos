@@ -143,5 +143,6 @@ int thread_get_load_avg (void);
 
 /* Added Function */
 void checkInvoke(struct thread* t, void* aux UNUSED);
+static bool priority_less(const struct list_elem *a, const struct list_elem *b, void *aux);
 
 #endif /* threads/thread.h */
