@@ -206,9 +206,6 @@ thread_create (const char *name, int priority,
 
   intr_set_level (old_level);
 
-  /* Initialize the ticks_blocked */
-  t->ticks_blocked = 0;
-
   /* Add to run queue. */
   thread_unblock (t);
 
@@ -482,6 +479,9 @@ init_thread (struct thread *t, const char *name, int priority)
   t->priority = priority;
   t->magic = THREAD_MAGIC;
   list_push_back (&all_list, &t->allelem);
+
+  /* Initialize the ticks_blocked */
+  t->ticks_blocked = 0;
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and
